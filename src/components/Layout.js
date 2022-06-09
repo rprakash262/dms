@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { ACTIONS } from '../reducers/layoutReducer';
+import UploadSanctionOrder from './UploadSanctionOrder';
 import '../App.css'
 
 class Layout extends React.Component {
@@ -26,15 +27,28 @@ class Layout extends React.Component {
         <div className="Bottom">
           <div className="Sidebar">
             <div onClick={() => changeTab('one')} className="one-tab">
-              Tab One
-              <div className="one-tab-pointer"/>
+              Upload Sanction Order
+              {selectedTab === 'one' && 
+              <div className="one-tab-pointer"/>}
             </div>
-            <div onClick={() => changeTab('two')} className="one-tab">Tab Two</div>
-            <div onClick={() => changeTab('three')} className="one-tab">Tab Three</div>
-            <div onClick={() => changeTab('four')} className="one-tab">Tab Four</div>
+            <div onClick={() => changeTab('two')}className="one-tab">
+              Tab Two
+              {selectedTab === 'two' && 
+              <div className="one-tab-pointer"/>}
+            </div>
+            <div onClick={() => changeTab('three')} className="one-tab">
+                Tab Three
+                {selectedTab === 'three' && 
+                <div className="one-tab-pointer"/>}
+              </div>
+            <div onClick={() => changeTab('four')} className="one-tab">
+              Tab Four
+              {selectedTab === 'four' && 
+              <div className="one-tab-pointer"/>}
+            </div>
           </div>
           <div className="Main-Content">
-            {selectedTab === 'one' && <div>Main Content one</div>}
+            {selectedTab === 'one' && <UploadSanctionOrder />}
             {selectedTab === 'two' && <div>Main Content two</div>}
             {selectedTab === 'three' && <div>Main Content three</div>}
             {selectedTab === 'four' && <div>Main Content four</div>}
