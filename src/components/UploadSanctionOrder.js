@@ -13,7 +13,11 @@ class UploadSanctionOrder extends React.Component {
       <div className="upload-sanction-order">
         <h4>Upload Sanction Order</h4>
         <div>
-          <input type="file" onChange={() => {}} />
+          <input
+            type="file"
+            className="input-file"
+            onChange={() => {}}
+          />
           <button className="button">Upload</button>
         </div>
       </div>

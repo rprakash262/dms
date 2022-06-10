@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { ACTIONS } from '../reducers/layoutReducer';
 import UploadSanctionOrder from './UploadSanctionOrder';
+import Sidebar from './Sidebar';
 import '../App.css'
 
 class Layout extends React.Component {
@@ -25,28 +26,10 @@ class Layout extends React.Component {
           <div className="header-right"></div>
         </div>
         <div className="Bottom">
-          <div className="Sidebar">
-            <div onClick={() => changeTab('one')} className="one-tab">
-              Upload Sanction Order
-              {selectedTab === 'one' && 
-              <div className="one-tab-pointer"/>}
-            </div>
-            <div onClick={() => changeTab('two')}className="one-tab">
-              Tab Two
-              {selectedTab === 'two' && 
-              <div className="one-tab-pointer"/>}
-            </div>
-            <div onClick={() => changeTab('three')} className="one-tab">
-                Tab Three
-                {selectedTab === 'three' && 
-                <div className="one-tab-pointer"/>}
-              </div>
-            <div onClick={() => changeTab('four')} className="one-tab">
-              Tab Four
-              {selectedTab === 'four' && 
-              <div className="one-tab-pointer"/>}
-            </div>
-          </div>
+          <Sidebar
+            selectedTab={selectedTab}
+            changeTab={changeTab}
+          />
           <div className="Main-Content">
             {selectedTab === 'one' && <UploadSanctionOrder />}
             {selectedTab === 'two' && <div>Main Content two</div>}

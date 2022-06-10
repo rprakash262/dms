@@ -18,6 +18,11 @@
   background: #555;
 } 
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -37,6 +42,33 @@ body {
 
 .button:hover {
   background-color: #40a2b2d6;
+}
+
+.input-file  {
+  visibility: hidden;
+}
+
+.input-file::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(to right, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+
+.input-file:hover::before {
+  border-color: black;
+}
+.input-file:active::before {
+  background: -webkit-linear-gradient(to right, #e3e3e3, #f9f9f9);
 }
 
 #root {
@@ -123,6 +155,8 @@ body {
 .Main-Content {
   width: 100%;
   overflow-y: scroll;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .one-tab {
@@ -143,7 +177,7 @@ body {
   position: absolute;
   width: 0; 
   height: 0; 
-  left: 202px;
+  left: 214px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent; 
   border-left: 10px solid #40a2b2;
