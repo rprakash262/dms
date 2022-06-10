@@ -1,11 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { ACTIONS } from '../reducers/layoutReducer';
+import { uploadSanctionOrderAction } from '../actions';
 
 class UploadSanctionOrder extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-
+      selectedFile: null,
     }
+  }
+
+  onFileChange = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+
+  uploadSanctionOrder = async () => {
+    const { selectedFile } = this.state;
+    const { toggleAlert } = this.props;
+
+    if (selectedFile === null) {
+      return toggleAlert(true, 'error', 'Please select a file to upload!');
+    }
+
+    await uploadSanctionOrderAction(selectedFile[0]);
+    return toggleAlert(true, 'success', 'File uploaded successfully!!');
   }
 
   render () {
@@ -16,13 +36,26 @@ class UploadSanctionOrder extends React.Component {
           <input
             type="file"
             className="input-file"
-            onChange={() => {}}
+            onChange={this.onFileChange}
           />
-          <button className="button">Upload</button>
+          <button
+            className="button"
+            onClick={this.uploadSanctionOrder}
+          >
+            Upload
+          </button>
         </div>
       </div>
     )
   }
 }
 
-export default UploadSanctionOrder;
+const mapState = (state) => {
+
+}
+
+const mapDispatch = {
+  toggleAlert: ACTIONS.toggleAlert,
+}
+
+export default connect(mapState, mapDispatch)(UploadSanctionOrder);

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { ACTIONS } from '../reducers/layoutReducer';
 import UploadSanctionOrder from './UploadSanctionOrder';
 import Sidebar from './Sidebar';
+import AlertBar from './AlertBar';
 import '../App.css'
 
 class Layout extends React.Component {
@@ -17,6 +18,9 @@ class Layout extends React.Component {
     const {
       changeTab,
       selectedTab,
+      alertBool,
+      alertType,
+      alertMsg,
     } = this.props;
 
     return (
@@ -37,16 +41,29 @@ class Layout extends React.Component {
             {selectedTab === 'four' && <div>Main Content four</div>}
           </div>
         </div>
+        <AlertBar
+          alertBool={alertBool}
+          alertType={alertType}
+          alertMsg={alertMsg}
+        />
       </div>
     )
   }
 }
 
 const mapstate = (state) => {
-  const { selectedTab } = state.layout;
+  const {
+    selectedTab,
+    alertBool,
+    alertType,
+    alertMsg,
+  } = state.layout;
 
   return {
     selectedTab,
+    alertBool,
+    alertType,
+    alertMsg,
   }
 }
 
